@@ -1,0 +1,62 @@
+//root
+$bgColour: #f7fbfc;
+$textColour: red;
+$navColour: #d9d7f1;
+$borderColour: #219f94;
+$fontHeaderSize: 1rem;
+$fontTextSize: 0.5rem;
+$fontVariant: small-caps;
+$font-spacing: 0.05em;
+$font-stack: 'Roboto', sans-serif;
+$heading-stack: 'Poppins', sans-serif;
+$desktop: 1024px;
+$tablet: 760px;
+$mobile: 368px;
+
+//reset & globals
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $bgColour;
+  min-height: 100vh;
+}
+
+//index/home module
+.main-container {
+  width: 100%;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h2 {
+    text-align: center;
+    font-family: $heading-stack;
+  }
+}
+
+//nav
+.nav-container {
+  min-height: 10vh;
+  width: 100%;
+  background-color: $navColour;
+  display: flex;
+  justify-content: space-around;
+
+  h1 {
+  }
+}
+
+//welcome
+
+.loading-container {
+  margin-block-start: 3rem;
+  .loading-image {
+    border-radius: 35% !important;
+  }
+}
