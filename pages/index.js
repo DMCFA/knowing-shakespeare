@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import react, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 //components
 import Loading from '../components/Loading';
@@ -8,6 +8,7 @@ import SearchBar from '../components/SearchBar';
 import Welcome from '../components/Welcome';
 import Results from '../components/Results';
 import NoResults from '../components/NoResults';
+import Pagination from '../components/Pagination';
 
 //api
 import { getData, failedRequest } from './api/quotes';
@@ -21,13 +22,12 @@ const initialStatus = {
 export default function Home() {
   const [status, setStatus] = useState(initialStatus);
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const quotesPerPage = useState(10);
   const [query, setQuery] = useState('');
   const [newSearch, setNewSearch] = useState(false);
 
-  const something = 'henry';
-
   useEffect(() => {
-    console.log(status);
     if (newSearch) {
       setStatus({
         ...status,
@@ -35,13 +35,14 @@ export default function Home() {
         loading: true,
       });
       setNewSearch(false);
+      setQuery('');
       try {
         getData(query).then((results) => {
-          setData(results);
-          console.log(data);
+          setData(results.hits.hits);
           setStatus({
             ...status,
             loading: false,
+            welcome: false,
           });
         });
       } catch {
@@ -53,7 +54,13 @@ export default function Home() {
         console.log(error);
       }
     }
-  }, [newSearch, query, status]);
+  }, [newSearch, query, status, data]);
+
+  const lastQuotetIdx = currentPage * quotesPerPage;
+  const firstQuoteIdx = lastQuotetIdx - quotesPerPage;
+  const currentQuotes = data.slice(firstQuoteIdx, lastQuotetIdx);
+
+  const changePage = (pageNumber) => setCurrentPage(pageNumber);
 
   const displayStatus = () => {
     if (status.welcome == true) {
@@ -62,8 +69,18 @@ export default function Home() {
       return <Loading />;
     } else if (status.error == true || failedRequest) {
       return <NoResults />;
+    } else {
+      return (
+        <>
+          <Results results={currentQuotes} />
+          <Pagination
+            quotesPerPage={quotesPerPage}
+            totalQuotes={data.length}
+            changePage={changePage}
+          />
+        </>
+      );
     }
-    return <Results results={data} />;
   };
   return (
     <>
@@ -75,7 +92,7 @@ export default function Home() {
       <main className='main-container'>
         <Nav />
         <h2>type your quote below</h2>
-        <SearchBar setSearch={setQuery} newSearch={setNewSearch} />
+        <SearchBar setQuery={setQuery} newSearch={setNewSearch} />
         {displayStatus()}
       </main>
 
