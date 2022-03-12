@@ -5,7 +5,7 @@ const Loading = () => {
     <div className='loading-container'>
       <Image
         className='loading-image'
-        src='/shakespeare-gif.gif'
+        src='/loading.svg'
         alt='Shakespeare GIF'
         width={500}
         height={480}
