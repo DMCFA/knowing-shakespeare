@@ -3,7 +3,6 @@ import axios from 'axios';
 const baseURL = 'http://cosmic-elastic.eu.ngrok.io/shakespeare/_search';
 
 const bodyData = {
-  from: 10,
   size: 100,
   query: {
     match_phrase: {
