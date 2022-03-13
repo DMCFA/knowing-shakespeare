@@ -7,8 +7,8 @@ const NoResults = () => {
         className='loading-image'
         src='/shakespeare-gif.gif'
         alt='Confused Dog'
-        width={400}
-        height={400}
+        width={340}
+        height={340}
       ></Image>
     </div>
   );
