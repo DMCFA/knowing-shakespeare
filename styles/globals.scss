@@ -45,6 +45,13 @@ ul {
   margin: 0;
 }
 
+img {
+  @media screen and (max-width: $mobile) {
+    max-width: 20rem !important;
+    max-height: fit-content !important;
+  }
+}
+
 //index/home module
 
 .main-container {
@@ -173,6 +180,16 @@ ul {
   width: 100%;
   margin-top: 2rem;
   margin-right: 40rem;
+
+  @media screen and (max-height: $tablet) {
+    margin-top: 0;
+  }
+  @media screen and (max-width: 950px) {
+    margin-right: 60%;
+  }
+  @media screen and (max-width: $tablet) {
+    margin-right: 50%;
+  }
 }
 
 //loading module
@@ -321,6 +338,10 @@ ul {
     color: $textColour;
     padding-bottom: 1rem;
     animation: no-results-animation 1s cubic-bezier(0.215, 0.61, 0.355, 1) both;
+
+    @media screen and (max-width: $mobile) {
+      font-size: 1.8rem;
+    }
   }
 
   @keyframes no-results-animation {

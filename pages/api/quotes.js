@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://cosmic-elastic.eu.ngrok.io/shakespeare/_search';
+const baseURL = 'https://cosmic-elastic.eu.ngrok.io/shakespeare/_search';
 
 const bodyData = {
   size: 100,
