@@ -17,7 +17,6 @@ export const getData = async (searchStr) => {
   try {
     const res = await axios.post(baseURL, bodyData);
     const data = res.data;
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

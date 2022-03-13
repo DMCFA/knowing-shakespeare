@@ -6,8 +6,8 @@ const Welcome = () => {
       <Image
         src='/shakespeare-main.png'
         alt='Shakespeare dance colour man'
-        width={400}
-        height={300}
+        width={520}
+        height={450}
         responsive='true'
       />
     </div>

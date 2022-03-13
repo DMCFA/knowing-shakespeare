@@ -7,8 +7,8 @@ const Loading = () => {
         className='loading-image'
         src='/loading.svg'
         alt='Shakespeare GIF'
-        width={500}
-        height={480}
+        width={300}
+        height={300}
       ></Image>
     </div>
   );

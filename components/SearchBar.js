@@ -1,5 +1,5 @@
-const SearchBar = ({ setSearch, newSearch }) => {
-  let searchWord = setSearch;
+const SearchBar = ({ setQuery, newSearch }) => {
+  let searchWord = setQuery;
   let setNewSearch = newSearch;
 
   const handleSubmit = (e) => {

@@ -1,14 +1,14 @@
 import Image from 'next/image';
 const NoResults = () => {
   return (
-    <div>
-      <h2>no results found!</h2>
+    <div className='no-results-container'>
+      <h2 className='no-results'>no results found!</h2>
       <Image
         className='loading-image'
-        src='/error.jpg'
+        src='/shakespeare-gif.gif'
         alt='Confused Dog'
-        width={500}
-        height={480}
+        width={400}
+        height={400}
       ></Image>
     </div>
   );
