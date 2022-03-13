@@ -1,10 +1,12 @@
 const Pagination = ({ quotesPerPage, totalQuotes, changePage }) => {
   const pageNumbers = [];
 
+  //add total number of pages to array
   for (let i = 1; i <= Math.ceil(totalQuotes / quotesPerPage); i++) {
     pageNumbers.push(i);
   }
 
+  //create page numbers and handle page change
   const numbersList = pageNumbers.map((number) => {
     return (
       <li key={number}>

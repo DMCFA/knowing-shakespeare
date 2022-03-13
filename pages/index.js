@@ -14,6 +14,7 @@ import Footer from '../components/Footer';
 //api
 import { getData, failedRequest } from './api/quotes';
 
+//status initial state
 const initialStatus = {
   welcome: true,
   loading: false,
@@ -21,12 +22,14 @@ const initialStatus = {
 };
 
 export default function Home() {
+  //state
   const [status, setStatus] = useState(initialStatus);
   const [data, setData] = useState([]);
   const [query, setQuery] = useState('');
   const [newSearch, setNewSearch] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
+  //get search request and set different status
   useEffect(() => {
     if (newSearch) {
       setStatus({
@@ -56,6 +59,7 @@ export default function Home() {
     }
   }, [newSearch, query, status, data]);
 
+  //create & handle pagination
   const quotesPerPage = 5;
   const lastQuotetIdx = currentPage * quotesPerPage;
   const firstQuoteIdx = lastQuotetIdx - quotesPerPage;
@@ -63,6 +67,7 @@ export default function Home() {
 
   const changePage = (pageNumber) => setCurrentPage(pageNumber);
 
+  //set components according to current status
   const displayStatus = () => {
     if (status.welcome == true) {
       return <Welcome />;

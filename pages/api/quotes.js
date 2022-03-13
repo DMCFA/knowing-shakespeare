@@ -10,8 +10,12 @@ const bodyData = {
     },
   },
 };
+
 export let failedRequest = false;
 
+// @route    POST "/"
+// @desc.    Get matching text entries
+// @access   Public
 export const getData = async (searchStr) => {
   bodyData.query.match_phrase.text_entry = searchStr;
   try {

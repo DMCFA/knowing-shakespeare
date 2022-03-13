@@ -1,6 +1,7 @@
 import React from 'react';
 import NoResults from './NoResults';
 
+//create list elements
 const Results = ({ results }) => {
   const resultCard = results.map((result) => {
     return (

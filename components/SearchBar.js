@@ -2,6 +2,7 @@ const SearchBar = ({ setQuery, newSearch }) => {
   let searchWord = setQuery;
   let setNewSearch = newSearch;
 
+  //set search word and reset input
   const handleSubmit = (e) => {
     e.preventDefault();
     setNewSearch(true);
