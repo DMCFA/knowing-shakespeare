@@ -11,9 +11,9 @@ $fontVariant: small-caps;
 $font-spacing: 0.05em;
 $font-stack: 'Roboto', sans-serif;
 $heading-stack: 'Poppins', sans-serif;
-$desktop: 1024px;
+$desktop: 810px;
 $tablet: 760px;
-$mobile: 368px;
+$mobile: 500px;
 
 @mixin flex {
   display: flex;
@@ -29,16 +29,20 @@ $mobile: 368px;
   box-sizing: border-box;
 }
 
-html,
-body {
+html {
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 body {
   background-color: $bgColour;
   min-height: 100vh;
-  width: calc(100%);
-  max-width: calc(100vw - 1em);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 //index/home module
@@ -46,7 +50,6 @@ body {
 .main-container {
   @include flex;
   width: 100%;
-  width: 100vw;
   flex-direction: column;
 }
 
@@ -57,6 +60,19 @@ body {
   font-size: $fontHeaderSize;
   text-transform: capitalize;
   margin-top: 4rem;
+
+  @media screen and (max-height: 870px) {
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-height: 720px) {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: $mobile) {
+    font-size: 1.3rem;
+  }
 }
 
 //nav module
@@ -74,6 +90,10 @@ body {
     font-size: 3rem;
     font-variant: $fontVariant;
     margin-block: auto;
+
+    @media screen and (max-width: $mobile) {
+      font-size: 2.5rem;
+    }
   }
 }
 
@@ -87,6 +107,14 @@ body {
     display: grid;
     grid-template-columns: 1fr auto;
     margin-top: 1.5rem;
+
+    @media screen and (min-height: 1100px) {
+      margin-top: 3rem;
+    }
+
+    @media screen and (max-height: 720px) {
+      margin-top: 1rem;
+    }
   }
 
   input {
@@ -100,6 +128,10 @@ body {
     border: 0.05rem solid $textColour;
     border-radius: 2%;
     outline: none;
+
+    @media screen and (max-width: $mobile) {
+      padding-block: 0.8rem;
+    }
 
     &:focus,
     :active {
@@ -155,9 +187,21 @@ body {
   flex-flow: column wrap;
   margin-top: 1.2rem;
 
+  @media screen and (max-height: 835px) {
+    margin: 0;
+  }
+
   ul {
     list-style: none;
     min-width: 32rem;
+
+    @media screen and (max-width: 600px) {
+      min-width: 22rem;
+    }
+
+    @media screen and (max-width: $mobile) {
+      margin-inline: 0.5rem;
+    }
 
     li {
       @include flex;
@@ -168,15 +212,44 @@ body {
       box-shadow: 0.5rem 0.55rem 0.6rem 0 #919191;
       color: $textColour;
 
+      @media screen and (min-height: 1024px) {
+        margin-block: 2.2rem;
+      }
+      @media screen and (max-height: 770px) {
+        margin-block: 0.3rem;
+      }
+      @media screen and (max-height: 695px) {
+        padding: 0.4rem;
+      }
+
       h3 {
         padding-block-end: 0.4rem;
         font-family: $heading-stack;
+
+        @media screen and (max-height: $desktop) {
+          font-size: $fontTextSize;
+        }
+
+        @media screen and (max-height: 695px) {
+          padding-block-end: 0.2rem;
+        }
+
+        @media screen and (max-width: $mobile) {
+          font-size: 0.9rem;
+        }
       }
 
       p {
         font-family: $font-stack;
         font-weight: 300;
         font-style: italic;
+
+        @media screen and (max-height: $desktop) {
+          font-size: 0.9rem;
+        }
+        @media screen and (max-width: $mobile) {
+          font-size: 0.8rem;
+        }
       }
     }
   }
@@ -186,11 +259,23 @@ body {
 
 .pagination-nav {
   @include flex;
-  margin-top: 1.8rem;
+  margin-top: 2rem;
+
+  @media screen and (max-height: 850px) {
+    margin-top: 1.5rem;
+  }
 
   ul {
     display: flex;
-    list-style: none;
+
+    @media screen and (max-width: $tablet) {
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+    }
+
+    @media screen and (max-width: $mobile) {
+      margin-inline: 0.5rem;
+    }
 
     a {
       text-decoration: none;
@@ -198,13 +283,26 @@ body {
       font-size: 1.3rem;
       font-family: $heading-stack;
       padding: 0.5rem;
-      border: 0.05rem solid $textColour;
+      border: 0.08rem solid $textColour;
       transition: 0.7s linear;
+
+      @media screen and (max-height: $desktop) {
+        font-size: $fontTextSize;
+      }
+
+      @media screen and (max-width: $tablet) {
+        border: 0;
+        font-weight: 700;
+      }
 
       &:hover {
         transition: 0.7s linear;
         background-color: $borderColour;
         color: $navBgColour;
+
+        @media screen and (max-width: $tablet) {
+          background-color: #fff;
+        }
       }
     }
   }
