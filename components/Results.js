@@ -1,14 +1,21 @@
+import React from 'react';
+import NoResults from './NoResults';
+
 const Results = ({ results }) => {
-  const resultCard = results.forEach(() => {
-    <li key={results.id}>
-      <h2>{results.title}</h2>
-      <p>{results.quote}</p>
-    </li>;
+  const resultCard = results.map((result) => {
+    return (
+      <li key={result._id}>
+        <h3>{result._source.play_name}</h3>
+        <p>
+          <q>{result._source.text_entry}</q>
+        </p>
+      </li>
+    );
   });
 
   return (
     <div className='results-container'>
-      <ul>{resultCard}</ul>
+      {results.length > 0 ? <ul>{resultCard}</ul> : <NoResults />}
     </div>
   );
 };
