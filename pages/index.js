@@ -9,6 +9,7 @@ import Welcome from '../components/Welcome';
 import Results from '../components/Results';
 import NoResults from '../components/NoResults';
 import Pagination from '../components/Pagination';
+import Footer from '../components/Footer';
 
 //api
 import { getData, failedRequest } from './api/quotes';
@@ -22,10 +23,9 @@ const initialStatus = {
 export default function Home() {
   const [status, setStatus] = useState(initialStatus);
   const [data, setData] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const quotesPerPage = useState(10);
   const [query, setQuery] = useState('');
   const [newSearch, setNewSearch] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     if (newSearch) {
@@ -56,6 +56,7 @@ export default function Home() {
     }
   }, [newSearch, query, status, data]);
 
+  const quotesPerPage = 5;
   const lastQuotetIdx = currentPage * quotesPerPage;
   const firstQuoteIdx = lastQuotetIdx - quotesPerPage;
   const currentQuotes = data.slice(firstQuoteIdx, lastQuotetIdx);
@@ -91,12 +92,14 @@ export default function Home() {
 
       <main className='main-container'>
         <Nav />
-        <h2>type your quote below</h2>
+        <h2 className='quote'>type your quote below</h2>
         <SearchBar setQuery={setQuery} newSearch={setNewSearch} />
         {displayStatus()}
       </main>
 
-      <footer></footer>
+      <footer>
+        <Footer />
+      </footer>
     </>
   );
 }
