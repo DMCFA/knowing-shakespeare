@@ -1,4 +1,3 @@
-import React from 'react';
 import NoResults from './NoResults';
 
 //create list elements
